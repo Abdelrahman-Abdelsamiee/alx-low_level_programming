@@ -2,21 +2,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char **strtow(char *str);  // Declaration of strtow function
+
+/**
+ * print_tab - Prints an array of strings
+ * @tab: The array to print
+ *
+ * Return: nothing
+ */
+void print_tab(char **tab)
+{
+    int i;
+
+    for (i = 0; tab[i] != NULL; ++i)
+    {
+        printf("%s\n", tab[i]);
+    }
+}
+
 /**
  * main - check the code for ALX School students.
  *
- * Return: Always 0.
+ * Return: 1 if an error occurred, 0 otherwise
  */
-int main(int ac, char *av[])
+int main(void)
 {
-    char *s;
+    char **tab;
 
-    s = argstostr(ac, av);
-    if (s == NULL)
+    tab = strtow("      ALX School         #cisfun      ");
+    if (tab == NULL)
     {
+        printf("Failed\n");
         return (1);
     }
-    printf("%s", s);
-    free(s);
+    print_tab(tab);
     return (0);
 }
